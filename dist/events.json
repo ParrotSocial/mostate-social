@@ -1,0 +1,109 @@
+{
+  "sponsors": {
+    "9/4/2016 14:37:13": {
+      "name": "9/4/2016 14:37:13",
+      "letters": "9/5/2016",
+      "nickname": "Enactus Meeting",
+      "twitter": "3:00:00 PM",
+      "colors": null
+    }
+  },
+  "events": [
+    {
+      "sponsor": "9/4/2016 14:37:13",
+      "description": "",
+      "startTime": null,
+      "endTime": null,
+      "location": "9/10/2016",
+      "locationAddress": "10:00:00 AM",
+      "meetTime": 1472986856000,
+      "meetLocation": "",
+      "meetLocationAddress": "",
+      "source": ""
+    },
+    {
+      "sponsor": "9/4/2016 14:37:13",
+      "description": "10:00:00 PM",
+      "startTime": null,
+      "endTime": null,
+      "location": "5:00:00 PM",
+      "locationAddress": "Craig Hall Tent Pad",
+      "meetTime": null,
+      "meetLocation": "",
+      "meetLocationAddress": "",
+      "source": "http://ocf.missouristate.edu/concert.htm"
+    },
+    {
+      "sponsor": "9/4/2016 14:37:13",
+      "description": "",
+      "startTime": null,
+      "endTime": null,
+      "location": "9/11/2016",
+      "locationAddress": "11:00:00 AM",
+      "meetTime": 1472985023000,
+      "meetLocation": "",
+      "meetLocationAddress": "",
+      "source": ""
+    },
+    {
+      "sponsor": "9/4/2016 14:37:13",
+      "description": "8:30:00 PM",
+      "startTime": null,
+      "endTime": null,
+      "location": "6:30:00 PM",
+      "locationAddress": "PSU Ballroom East (3rd Floor)",
+      "meetTime": null,
+      "meetLocation": "",
+      "meetLocationAddress": "",
+      "source": "https://missouristate.collegiatelink.net/organization/SIFE/calendar/details/1012281"
+    },
+    {
+      "sponsor": "9/4/2016 14:37:13",
+      "description": "9:00:00 PM",
+      "startTime": null,
+      "endTime": null,
+      "location": "8:00:00 PM",
+      "locationAddress": "PSU Room 314 ( 3rd Floor )",
+      "meetTime": null,
+      "meetLocation": "",
+      "meetLocationAddress": "",
+      "source": "https://missouristate.collegiatelink.net/organization/collegerepublicans/calendar/details/964331"
+    },
+    {
+      "sponsor": "9/4/2016 14:37:13",
+      "description": "9:00:00 PM",
+      "startTime": null,
+      "endTime": null,
+      "location": "8:00:00 PM",
+      "locationAddress": "PSU Room 314 ( 3rd Floor )",
+      "meetTime": null,
+      "meetLocation": "",
+      "meetLocationAddress": "",
+      "source": "https://missouristate.collegiatelink.net/organization/collegerepublicans/calendar/details/979816"
+    },
+    {
+      "sponsor": "9/4/2016 14:37:13",
+      "description": "9:00:00 PM",
+      "startTime": null,
+      "endTime": null,
+      "location": "8:00:00 PM",
+      "locationAddress": "PSU Room 314 ( 3rd Floor )",
+      "meetTime": null,
+      "meetLocation": "",
+      "meetLocationAddress": "",
+      "source": "https://missouristate.collegiatelink.net/organization/collegerepublicans/calendar/details/979815"
+    },
+    {
+      "sponsor": "9/4/2016 14:37:13",
+      "description": "9:00:00 PM",
+      "startTime": null,
+      "endTime": null,
+      "location": "8:00:00 PM",
+      "locationAddress": "PSU Room 314 ( 3rd Floor )",
+      "meetTime": null,
+      "meetLocation": "",
+      "meetLocationAddress": "",
+      "source": "https://missouristate.collegiatelink.net/organization/collegerepublicans/calendar/details/979814"
+    }
+  ]
+}

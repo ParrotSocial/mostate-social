@@ -1,0 +1,73 @@
+
+:host {
+  padding: 14px 0;
+  display: block;
+  min-height: (42px + 14px * 2);
+  @media (min-width: 544px) {
+    min-height: (64px + 14px * 2);
+  }
+}
+h3 {
+  margin: 0;
+  @media (max-width: 544px) {
+    font-size: 1.2em;
+  }
+  font-weight: bold;
+}
+
+.text-right-xs {
+    text-align: right;
+}
+
+@media (min-width: 544px) {
+  .text-right-sm {
+      text-align: right;
+  }
+}
+
+.text-center { text-align: center; }
+.event-body {
+  padding-left: 54px;
+  @media (min-width: 544px) {
+    padding-left: 82px;
+  }
+}
+
+.info-sponsor-thumbnail {
+  position: absolute;
+  text-align: center;
+  img {
+    width: 42px;
+    height: 42px;
+    @media (min-width: 544px) {
+      width: 64px;
+      height: 64px;
+      margin-top: 8px;
+    }
+  }
+  /*
+  .nickname {
+    font-size: .6em;
+    padding: .3em;
+    background: #dbdbdb;
+    @media (max-width: 768px) {
+      opacity: 0;
+      transition: opacity .4s;
+    }
+    &.nickname-show {
+      opacity: 1;
+    }
+  } */
+}
+
+.details {
+  @media (max-width: 768px) {
+    max-height: 0;
+    transition: max-height linear .4s;
+    overflow: hidden;
+  }
+  position: relative;
+  &.details-open {
+    max-height: 100%;
+  }
+}

@@ -1,0 +1,7 @@
+<a *ngIf="href"
+    target="_blank"
+    [attr.href]="href"
+    [attr.alt]="displaySource"
+    [attr.title]="href"
+    [textContent]="displaySource"></a>
+<span *ngIf="!href">{{displaySource}}</span>
