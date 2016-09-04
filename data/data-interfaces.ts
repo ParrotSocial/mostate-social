@@ -2,16 +2,17 @@
 type ID = string
 
 export interface DataSponsor {
-  name: ID
-  letters: string
-  twitter: string
+  id: ID,
+  name: string,
+  image: string
   nickname?: string
-  colors?: string[]
 }
 
 export interface DataEvent {
-  sponsor: ID
-  description: string
+  sponsorID: ID
+  submittedTimestamp: number
+  title: string,
+  description?: string
   startTime: number
   endTime?: number
   location: string
@@ -23,6 +24,6 @@ export interface DataEvent {
 }
 
 export interface DataSummary {
-  sponsors: { [name: string]: DataSponsor },
+  sponsors: { [id: string]: DataSponsor },
   events: DataEvent[]
 }

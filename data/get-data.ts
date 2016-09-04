@@ -5,9 +5,11 @@ import fs = require('fs')
 const moment = require('moment')
 
 // returns null if the time is invalid
-// takes moment object and time string ('16:00')
+// takes moment object and time string ('16:00:00 PM')
 function setTime(mom, time: string): number {
-  const [hour, minute] = time.split(':')
+  let [hour, minute, second, ap] = time.split(/[:\s]/g)
+
+  if (/PM/.test(ap)) hour += 12
 
   if (isInt(hour) && isInt(minute)) return mom.set('hour', hour).set('minute', minute).valueOf()
 
@@ -23,17 +25,32 @@ function isInt (n: string): boolean {
   return !!i;
 }
 
-function splitEventData (str, sponsor: DataSponsor): DataEvent {
+function splitEventData (str): DataEvent {
   // str is csv of row in spread sheet
-  const [date, timeStart, timeEnd, location, locationAddress, description, timeMeet, meetLocation, meetLocationAddress, source] = str.split(',')
+  const [
+    // A
+    timeSubmitted,
+    // B
+    title,
+    // C
+    date,
+    // D        // E      // F      // G      // H
+    timeStart,  location, timeEnd,  timeMeet, meetLocation,
+    // I    // J          // K        // L              // M
+    source, contactEmail, sponsorID,  locationAddress,  meetLocationAddress,
+    // N
+    description ] = str.split(/\t/g)
 
-  const momentDate = moment(date).set('year', 2016)
+  const momentDate = moment(date, 'MM/DD/YYYY')
   const startTime = isInt(timeStart) ? setTime(momentDate, timeStart) : null
   const endTime = isInt(timeEnd) ? setTime(momentDate, timeEnd) : null
   const meetTime = isInt(timeMeet) ? setTime(momentDate, timeMeet) : null
+  const submittedTimestamp = moment(timeSubmitted, 'M/D/YYYY H:MM:SS').valueOf()
 
   let evt: DataEvent = {
-    sponsor: sponsor.name,
+    sponsorID,
+    submittedTimestamp,
+    title,
     description,
     startTime,
     endTime,
@@ -48,22 +65,11 @@ function splitEventData (str, sponsor: DataSponsor): DataEvent {
 }
 
 function extractEvents (fileContents: any, dataSummary: DataSummary)  {
-  const [, sponsorData,, ...eventsData] = fileContents.split(/\s*\n\s*/g)
-  console.log("# Sponsor", sponsorData)
+  const [,...eventsData] = fileContents.split(/\s*\n\s*/g)
 
-  const [sponsorName, sponsorNickname, sponsorLetters, sponsorTwitter] = sponsorData.split(',')
-
-  // TODO use twitter for colors
-  let sponsorColorsFiltered: any = null // sponsorColors.filter((s) => s.length > 0)
-
-  const sponsor: DataSponsor = {
-    name: sponsorName,
-    letters: sponsorLetters,
-    nickname: sponsorNickname || null,
-    twitter: sponsorTwitter || null,
-    colors: sponsorColorsFiltered || null }
-
-  let i: any
+  // get all event rows until a row has no contents
+  // i = row with out contents or length of eventsData
+  let i: number
   for (i = 0; i < eventsData.length; i++) {
     if (!/\w/.test(eventsData[i])) break
   }
@@ -72,12 +78,25 @@ function extractEvents (fileContents: any, dataSummary: DataSummary)  {
 
   console.log(`# Events (${eventsDataSliced.length})`, eventsDataSliced)
 
-  let events: DataEvent[] = eventsDataSliced.map((evString: String) => splitEventData(evString, sponsor))
-
+  let events: DataEvent[] = eventsDataSliced.map((evString: String) => splitEventData(evString))
 
   // modify dataSummary
   dataSummary.events.push(...events.slice(0, i))
-  dataSummary.sponsors[sponsor.name] = sponsor
+}
+
+function createDataSponsor(bn: [string, string]): DataSponsor {
+  const matchNickname = /^(.+)\((.+)\)$/.exec(bn[0].trim())
+  // Match before parenthesis
+  const name = matchNickname ? matchNickname[1].trim() : bn[0]
+  // Match in parenthesis
+  const nickname = matchNickname ? matchNickname[2].trim() : null
+
+  return {
+    id: bn[0],
+    name,
+    nickname,
+    image: bn[1]
+  }
 }
 
 export function create (readFromDirectory: string, done: (error: any, events: DataSummary) => any) {
@@ -89,6 +108,13 @@ export function create (readFromDirectory: string, done: (error: any, events: Da
   fs.readdirSync(readFromDirectory)
     .map((bn) => fs.readFileSync(`${readFromDirectory}/${bn}`, 'utf8'))    // get file contents
     .forEach((evfile) => extractEvents(evfile, dataSummary)) // map to events
+
+  const sponsorsContent = fs.readFileSync(__dirname + '/sponsors-info.json', 'utf8')
+  const sponsors: [string, string][] = JSON.parse(sponsorsContent)
+
+  sponsors
+    .map(createDataSponsor)    // create bare sponsor
+    .forEach((ds: DataSponsor) => dataSummary.sponsors[ds.id] = ds) // map to sponsor id
 
 	done(null, dataSummary)
 }
