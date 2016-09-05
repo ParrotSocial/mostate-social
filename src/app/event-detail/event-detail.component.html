@@ -24,7 +24,7 @@
         <vodka-source [source]="event.source"></vodka-source>
       </div>
     </div>
-    <div *ngIf="event.meetLocation && event.meetTime" class="row">
+    <div *ngIf="event.meetLocation || event.meetTime" class="row">
       <div class="col-sm-4 col-md-6 text-right-sm">Meet:</div>
       <div class="col-sm-8 col-md-6">
         <vodka-location-time
@@ -34,7 +34,7 @@
             [time]="event.meetTime"></vodka-location-time>
       </div>
     </div>
-    <div *ngIf="event.location && event.startTime" class="row">
+    <div *ngIf="event.location || event.startTime" class="row">
       <div class="col-sm-4 col-md-6 text-right-sm">Event:</div>
       <div class="col-sm-8 col-md-6">
         <vodka-location-time

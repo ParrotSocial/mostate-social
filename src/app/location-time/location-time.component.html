@@ -10,7 +10,7 @@
   </span>
 </span>
 <span *ngIf="!locationAddress">
-  {{location}}
+  {{location || ''}}
 </span>
 <span class="at">@</span>
 {{ nToTime(time) }}{{ timeEnd ? '-' + nToTime(timeEnd) : ''  }}
