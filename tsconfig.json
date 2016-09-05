@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "es6",
     "module": "commonjs",
     "moduleResolution": "node",
     "sourceMap": true,
@@ -17,11 +17,13 @@
   ],
   "include": [
     // "src/custom-typings/index.d.ts",
+    // "src/custom-typings/index.d.ts",
     "typings/index.d.ts"
   ],
   "awesomeTypescriptLoaderOptions": {
     "resolveGlobs": true,
-    "forkChecker": true
+    "forkChecker": true,
+    "emitRequireType": true
   },
   "compileOnSave": false,
   "buildOnSave": false,

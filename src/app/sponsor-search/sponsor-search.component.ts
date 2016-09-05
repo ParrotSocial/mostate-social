@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angular/core';
 const moment = require('moment')
 
-import { EventDay, EventFilter, EventSorter } from '../shared/event-interfaces.ts'
+import { EventDay, EventFilter, EventSorter } from '../shared/event-interfaces'
 import { DataSummary, DataEvent, DataSponsor } from '../../../data/data-interfaces'
 
 export type SelectedSponsors = {[sponsor: string]: boolean}

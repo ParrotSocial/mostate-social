@@ -1,17 +1,14 @@
 import { Component, Input, OnInit } from '@angular/core'
 import { DomSanitizer } from '@angular/platform-browser'
 
-import { LocationTimeComponent } from '../location-time/location-time.component'
-import { SourceComponent } from '../source/source.component'
-import { DataEvent, DataSponsor } from 'mostate-rush/data-interfaces'
+import { DataEvent, DataSponsor } from '../../../data/data-interfaces'
 
 @Component({
   selector: 'vodka-event-detail',
   template: require('./event-detail.component.html'),
   styles: [
     require('!raw!stylus!./event-detail.component.styl')
-  ],
-  directives: [LocationTimeComponent, SourceComponent]
+  ]
 })
 export class EventDetailComponent implements OnInit {
   @Input() event: DataEvent

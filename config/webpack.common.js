@@ -16,7 +16,7 @@ var ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin;
  * Webpack Constants
  */
 const METADATA = {
-  title: 'mostate.vodka',
+  title: 'events.mostate.social',
   baseUrl: '/'
 };
 
@@ -134,7 +134,7 @@ module.exports = {
       },
 
       { test: /\.scss$/, loader: "style!css!stylus" },
-      { test: /\.styl$/, loader: "style!css!stylus" },
+      { test: /\.styl$/, loader: "raw!stylus" },
 
       {test: /\.png$/, loaders: [
         'file?name=i/[hash].[ext]'
@@ -171,7 +171,7 @@ module.exports = {
     //
     // See: https://webpack.github.io/docs/list-of-plugins.html#occurrenceorderplugin
     // See: https://github.com/webpack/docs/wiki/optimization#minimize
-    new webpack.optimize.OccurenceOrderPlugin(true),
+    // new webpack.optimize.OccurenceOrderPlugin(true),
 
     // Plugin: CommonsChunkPlugin
     // Description: Shares common code between the pages.

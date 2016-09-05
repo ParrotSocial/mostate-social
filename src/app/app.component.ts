@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild, ChangeDetectorRef } from '@angular/core'
 
 import { DataSummary, DataEvent, DataSponsor } from '../../data/data-interfaces'
 import { getData } from './get-data'
-import { EventDay, EventFilter, EventSorter } from './shared/event-interfaces.ts'
+import { EventDay, EventFilter, EventSorter } from './shared/event-interfaces'
 
 const Moment = require('moment')
 
@@ -19,7 +19,6 @@ interface EventsByTime {
 @Component({
   selector: 'vodka',
   template: require('./app.component.html'),
-  directives: [EventDetailComponent, SponsorSearchComponent],
   styles: [
 `:host {
   display: block;
@@ -37,7 +36,7 @@ export class AppComponent implements OnInit {
   searchOpen: boolean = false
   searchFilter: EventFilter
   isSearchApplied: boolean
-  changeSearchTimer: NodeJS.Timer
+  changeSearchTimer: number
 
   sponsors: { [name: string]: DataSponsor }
   constructor(private changes: ChangeDetectorRef) {
@@ -73,7 +72,7 @@ export class AppComponent implements OnInit {
 
     // update event list
     clearTimeout(this.changeSearchTimer)
-    this.changeSearchTimer = setTimeout(() => {
+    this.changeSearchTimer = <any> setTimeout(() => {
       this.update()
       this.changes.detectChanges()
     }, 500)
