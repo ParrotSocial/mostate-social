@@ -13,6 +13,7 @@ import { SponsorSearchComponent } from './sponsor-search/sponsor-search.componen
 
 const data: DataSummary = getData()
 
+export type AppDataEvent = { __detailOpen?: boolean } & DataEvent
 
 interface EventsByTime {
   [time: number]: DataEvent[]
@@ -31,7 +32,6 @@ require('!raw!stylus!./app.component.styl')
 export class AppComponent implements OnInit {
   SUBMISSION_URL = Globals.SUBMISSION_URL
   FEEDBACK_URL = Globals.FEEDBACK_URL
-  selectedEvent: DataEvent = null
   aboutOpen: boolean = false
 
   @ViewChild(SponsorSearchComponent) sponsorSearch: SponsorSearchComponent;
@@ -59,6 +59,19 @@ export class AppComponent implements OnInit {
     if (this.isSearchApplied) filters.push(this.searchFilter)
 
     return filters
+  }
+
+  toggleEventDayEvents (eventDay: EventDay) {
+    const hackEventDay = <any>eventDay
+    const open = !hackEventDay.__detailsOpen
+
+    hackEventDay.__detailsOpen = open
+
+    const len = eventDay.events.length
+    for (let i = 0; i < len; i++) {
+      let element = <AppDataEvent> eventDay.events[i]
+      element.__detailOpen = open
+    }
   }
 
   changeSearch(selectedSponsorsObject: {[sponsor: string]: boolean}) {
@@ -98,11 +111,11 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit () {
+    this.allEvents = data.events
     this.update()
     if (this.eventDays.length > 0) {
-      this.selectedEvent = this.eventDays[0].events[0] || null
+      this.toggleEventDayEvents(this.eventDays[0])
     }
-    this.allEvents = data.events
   }
 
   createDayTitle(m: any): string {

@@ -41,15 +41,19 @@
       class="event-day"
       [class.is-today]="eventDay.isToday">
     <div class="row text-center">
-      <h2>{{ createDayTitle(eventDay.date) }}</h2>
+      <h2 (click)="toggleEventDayEvents(eventDay)"
+          class="event-day-expand-toggle"
+          [class.expand-open]="eventDay.__detailsOpen">
+        {{ createDayTitle(eventDay.date) }}
+      </h2>
     </div>
     <div *ngFor="let event of eventDay.events; let first = first">
       <div class="event-divider" *ngIf="!first"></div>
       <vodka-event-detail
           [event]="event"
           [sponsor]="sponsors[event.sponsorID]"
-          [isOpen]="selectedEvent === event"
-          (click)="selectedEvent = event">
+          [isOpen]="event.__detailOpen"
+          (click)="event.__detailOpen = !event.__detailOpen">
       </vodka-event-detail>
     </div>
   </div>
