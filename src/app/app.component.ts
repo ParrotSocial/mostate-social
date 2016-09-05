@@ -32,6 +32,7 @@ export class AppComponent implements OnInit {
   SUBMISSION_URL = Globals.SUBMISSION_URL
   FEEDBACK_URL = Globals.FEEDBACK_URL
   selectedEvent: DataEvent = null
+  aboutOpen: boolean = false
 
   @ViewChild(SponsorSearchComponent) sponsorSearch: SponsorSearchComponent;
 

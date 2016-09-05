@@ -65,11 +65,11 @@
         </li>
       </ul>
     </div>
-    <div class="col-xs-12">
+    <div class="col-xs-12 fold" [class.fold-open]="aboutOpen">
       <div class="footer-divider">
-        <a href="#legal-text">about</a>
+        <a href="javascript:void(0)" (click)="aboutOpen = !aboutOpen">about</a>
       </div>
-      <div id="legal-text">
+      <div class="fold-contents">
         <div>
           This software is provided to you by the talent of <a href="http://parrot.social">Parrot Social</a>. If you are interested in what we do, please consider contacting us and getting involved with our efforts to make events and clubs more accessible to students.
           Email us at <a href="mailto:info@parrot.social">info@parrot.social</a> to start a conversation!

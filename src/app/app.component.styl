@@ -113,10 +113,24 @@ footerbg = #2B2B2B
   padding-top: 1em;
   padding-bottom: 1em;
 
+
+  .fold {
+    .fold-contents {
+      opacity: 1;
+      transition: opacity .4s
+      overflow: hidden
+    }
+    &:not(.fold-open) {
+      .fold-contents {
+        opacity: 0 !important;
+      }
+    }
+  }
+
   .footer-divider {
     margin: .5rem 0 1rem;
     border-bottom: solid #111 1.78px;
-    text-align: center;
+    text-align: right;
     a {
       text-decoration: none;
       color: darkgrey;
