@@ -9,7 +9,7 @@
     <!--<div class="col-xs-2 col-md-2 info-sponsor">{{ sponsor.nickname || event.sponsor }}</div>-->
     <h3 class="">
       <span class="info-desc col-xs-8"
-          [innerHTML]="security.bypassSecurityTrustHtml(event.displayDescription || event.description)"></span>
+          [innerHTML]="security.bypassSecurityTrustHtml(event.displayTitle || event.title)"></span>
       <span class="info-time col-xs-4 text-right-xs">
         <span class="tag tag-info" [class.tag-default]="event.started">{{ event.started ? "NOW" : displayTime }}</span>
       </span>

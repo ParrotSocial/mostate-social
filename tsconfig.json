@@ -1,29 +1,38 @@
 {
   "compilerOptions": {
-    "target": "es6",
+    "target": "es5",
     "module": "commonjs",
     "moduleResolution": "node",
-    "sourceMap": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "removeComments": false,
-    "noImplicitAny": false,
-    "suppressImplicitAnyIndexErrors": true
+    "allowSyntheticDefaultImports": true,
+    "sourceMap": true,
+    "noEmitHelpers": true,
+    "strictNullChecks": false,
+    "baseUrl": "./src",
+    // "paths": [],
+    "lib": [
+      "dom",
+      "es6"
+    ],
+    "types": [
+      "hammerjs",
+      "jasmine",
+      "node",
+      "protractor",
+      "selenium-webdriver",
+      "source-map",
+      "uglify-js",
+      "webpack"
+    ]
   },
   "exclude": [
     "node_modules",
-    "typings/main.d.ts",
-    "typings/main"
-  ],
-  "include": [
-    // "src/custom-typings/index.d.ts",
-    // "src/custom-typings/index.d.ts",
-    "typings/index.d.ts"
+    "docs"
   ],
   "awesomeTypescriptLoaderOptions": {
-    "resolveGlobs": true,
     "forkChecker": true,
-    "emitRequireType": true
+    "useWebpackText": true
   },
   "compileOnSave": false,
   "buildOnSave": false,

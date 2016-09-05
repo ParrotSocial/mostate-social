@@ -7,7 +7,7 @@ import { DataEvent, DataSponsor } from '../../../data/data-interfaces'
   selector: 'vodka-event-detail',
   template: require('./event-detail.component.html'),
   styles: [
-    require('!raw!stylus!./event-detail.component.styl')
+    require('./event-detail.component.styl')
   ]
 })
 export class EventDetailComponent implements OnInit {

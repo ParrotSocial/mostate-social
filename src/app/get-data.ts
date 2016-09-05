@@ -2,7 +2,7 @@ import { DataSummary, DataEvent, DataSponsor } from '../../data/data-interfaces'
 const data = <DataSummary> require('../../data/dist/events.json')
 
 export type DisplayEvent = DataEvent & {
-  displayDescription?: string
+  displayTitle?: string
   hrefLocation?: string
   hrefMeetLocation?: string
 }
@@ -26,10 +26,10 @@ const emojiFind = new RegExp(
 const emojiReplace = (match: string) => emojiByName[match.toLowerCase()]
 
 function addEventEmojis (a: DataEvent): DisplayEvent {
-  const unicoded = a.description.replace(emojiFind, emojiReplace)
-  const displayDescription = twemoji.parse(unicoded)
+  const unicoded = a.title.replace(emojiFind, emojiReplace)
+  const displayTitle = twemoji.parse(unicoded)
   let b = <DisplayEvent>
-    Object.assign({ displayDescription }, a)
+    Object.assign({ displayTitle }, a)
   return b
 }
 

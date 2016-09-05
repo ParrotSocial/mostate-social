@@ -13,7 +13,7 @@ export type SelectedSponsors = {[sponsor: string]: boolean}
 `:host {
   display: block;
 }`,
-    require('!raw!stylus!./sponsor-search.component.styl')
+    require('./sponsor-search.component.styl')
   ]
 })
 export class SponsorSearchComponent implements OnInit, OnChanges {
