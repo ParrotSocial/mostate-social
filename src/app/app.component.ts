@@ -4,6 +4,8 @@ import { DataSummary, DataEvent, DataSponsor } from '../../data/data-interfaces'
 import { getData } from './get-data'
 import { EventDay, EventFilter, EventSorter } from './shared/event-interfaces'
 
+import { Globals } from './globals'
+
 const Moment = require('moment')
 
 import { EventDetailComponent } from './event-detail/event-detail.component'
@@ -27,6 +29,8 @@ require('!raw!stylus!./app.component.styl')
   ]
 })
 export class AppComponent implements OnInit {
+  SUBMISSION_URL = Globals.SUBMISSION_URL
+  FEEDBACK_URL = Globals.FEEDBACK_URL
   selectedEvent: DataEvent = null
 
   @ViewChild(SponsorSearchComponent) sponsorSearch: SponsorSearchComponent;

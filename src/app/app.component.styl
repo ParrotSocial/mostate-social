@@ -33,11 +33,20 @@
   }
 }
 
+
+a {
+  text-shadow: rgba(0,0,0,0.9) 0 0 0px;
+  transition: all .2s;
+}
+a:hover {
+  color: white;
+  text-shadow: rgba(0,0,0,0.9) 0 0 4px;
+}
+
 .header {
   position: relative;
   background: #444;
   color: white;
-  text-align: center;
   height: 67px;
 
   .branding {
@@ -50,6 +59,11 @@
       position: relative;
       margin-top: -68.18%;
     }
+  }
+
+  .submit-link {
+    padding-top: .5em;
+    padding-left: 64px;
   }
 
   .search-bar {
@@ -90,10 +104,26 @@
   font-size: 26px;
 }
 
+footerbg = #2B2B2B
+
 .footer {
-  background: #2B2B2B;
+  background: footerbg;
   color: whitesmoke;
   font-size: 1rem;
   padding-top: 1em;
   padding-bottom: 1em;
+
+  .footer-divider {
+    margin: .5rem 0 1rem;
+    border-bottom: solid #111 1.78px;
+    text-align: center;
+    a {
+      text-decoration: none;
+      color: darkgrey;
+      margin-bottom: -.7em;
+      display: inline-block;
+      padding: 0 2em;
+      background: footerbg;
+    }
+  }
 }
