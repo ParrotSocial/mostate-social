@@ -1,5 +1,5 @@
-import { DataSummary, DataEvent, DataSponsor } from 'mostate-rush/data-interfaces'
-const data = <DataSummary> require('mostate-rush/dist/events.json')
+import { DataSummary, DataEvent, DataSponsor } from '../../data/data-interfaces'
+const data = <DataSummary> require('../../data/dist/events.json')
 
 export type DisplayEvent = DataEvent & {
   displayDescription?: string

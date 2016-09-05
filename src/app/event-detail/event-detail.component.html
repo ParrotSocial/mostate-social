@@ -1,6 +1,6 @@
 <div class="info-sponsor-thumbnail">
-  <img [attr.src]="'./thumbnails/' + event.sponsor + '.jpg'"
-      [attr.alt]="event.sponsor"
+  <img [attr.src]="'./thumbnails/' + sponsor.image"
+      [attr.alt]="sponsor.id"
       onerror="this.src='./thumbnails/alternative.jpg';">
   <!--<div class="nickname" [class.nickname-show]="isOpen">{{ sponsor.nickname || sponsor.name }}</div>-->
 </div>

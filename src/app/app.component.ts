@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, ChangeDetectorRef } from '@angular/core'
 
-import { DataSummary, DataEvent, DataSponsor } from 'mostate-rush/data-interfaces'
+import { DataSummary, DataEvent, DataSponsor } from '../../data/data-interfaces'
 import { getData } from './get-data'
 import { EventDay, EventFilter, EventSorter } from './shared/event-interfaces.ts'
 
@@ -67,7 +67,7 @@ export class AppComponent implements OnInit {
 
     } else {
       // Set up search for filtering events
-      this.searchFilter = (e) => selectedSponsorsObject[e.sponsor]
+      this.searchFilter = (e) => selectedSponsorsObject[e.sponsorID]
       this.isSearchApplied = true
     }
 

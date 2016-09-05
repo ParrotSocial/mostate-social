@@ -2,7 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angu
 const moment = require('moment')
 
 import { EventDay, EventFilter, EventSorter } from '../shared/event-interfaces.ts'
-import { DataSummary, DataEvent, DataSponsor } from 'mostate-rush/data-interfaces'
+import { DataSummary, DataEvent, DataSponsor } from '../../../data/data-interfaces'
 
 export type SelectedSponsors = {[sponsor: string]: boolean}
 
@@ -85,7 +85,7 @@ export class SponsorSearchComponent implements OnInit, OnChanges {
     }
 
     for (let eventDay of this.eventDays) {
-      eventDay.events.forEach((e) => eventsBySponsor[e.sponsor].push(e))
+      eventDay.events.forEach((e) => eventsBySponsor[e.sponsorID].push(e))
     }
 
     this.eventsBySponsor = eventsBySponsor

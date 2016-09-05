@@ -1,5 +1,4 @@
-
-import { DataEvent } from 'mostate-rush/data-interfaces'
+import { DataEvent } from '../../../data/data-interfaces'
 
 export interface EventFilter {
   (event: DataEvent): boolean

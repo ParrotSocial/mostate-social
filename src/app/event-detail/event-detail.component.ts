@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core'
-import { DomSanitizationService } from '@angular/platform-browser'
+import { DomSanitizer } from '@angular/platform-browser'
 
 import { LocationTimeComponent } from '../location-time/location-time.component'
 import { SourceComponent } from '../source/source.component'
@@ -19,7 +19,7 @@ export class EventDetailComponent implements OnInit {
   @Input() isOpen: boolean = true
   displayTime: string
   moment: any
-  constructor (private security: DomSanitizationService) {
+  constructor (private security: DomSanitizer) {
     this.moment = require('moment')
   }
   ngOnInit () {
