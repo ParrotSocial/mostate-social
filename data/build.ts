@@ -1,8 +1,8 @@
 import * as GetData from './get-data'
 import fs = require('fs')
 
-var distDir = './dist'
-var distFile = './dist/events.json'
+var distDir = __dirname + '/dist'
+var distFile = __dirname + '/dist/events.json'
 
 try {
   fs.unlinkSync(distFile)
