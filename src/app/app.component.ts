@@ -32,6 +32,7 @@ export class AppComponent implements OnInit {
   @ViewChild(SponsorSearchComponent) sponsorSearch: SponsorSearchComponent;
 
   eventDays: EventDay[] = []
+  allEvents: DataEvent[] = []
 
   searchOpen: boolean = false
   searchFilter: EventFilter
@@ -58,7 +59,7 @@ export class AppComponent implements OnInit {
   changeSearch(selectedSponsorsObject: {[sponsor: string]: boolean}) {
     // none selected
     const selKeys = Object.keys(selectedSponsorsObject)
-    const selected = selKeys.filter((sponsorName) => selectedSponsorsObject[sponsorName]).length
+    const selected = selKeys.filter((sponsorID) => selectedSponsorsObject[sponsorID]).length
 
     const sponKeys = Object.keys(this.sponsors)
     if (sponKeys.length === selected) {
@@ -79,7 +80,7 @@ export class AppComponent implements OnInit {
   }
 
   openSearch() {
-    this.sponsorSearch.selectNone()
+    if (!this.isSearchApplied) this.sponsorSearch.selectNone()
     this.searchOpen = !this.searchOpen
   }
 
@@ -96,6 +97,7 @@ export class AppComponent implements OnInit {
     if (this.eventDays.length > 0) {
       this.selectedEvent = this.eventDays[0].events[0] || null
     }
+    this.allEvents = data.events
   }
 
   createDayTitle(m: any): string {

@@ -1,10 +1,12 @@
-import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnChanges, ElementRef } from '@angular/core';
 const moment = require('moment')
 
 import { EventDay, EventFilter, EventSorter } from '../shared/event-interfaces'
-import { DataSummary, DataEvent, DataSponsor } from '../../../data/data-interfaces'
+import { DataSummary, DataEvent, DataSponsor, OtherID } from '../../../data/data-interfaces'
 
 export type SelectedSponsors = {[sponsor: string]: boolean}
+
+export type HackSponsor = DataSponsor & { __selected?: boolean, __events?: number }
 
 @Component({
   selector: 'vodka-sponsor-search',
@@ -17,21 +19,29 @@ export type SelectedSponsors = {[sponsor: string]: boolean}
   ]
 })
 export class SponsorSearchComponent implements OnInit, OnChanges {
-  @Input() sponsorsByName: {[name: string]: DataSponsor} = {}
+  @Input() sponsorsByID: {[id: string]: HackSponsor} = {}
   @Input() eventDays: EventDay[]
+  @Input() allEvents: DataEvent[]
   @Input() selection: SelectedSponsors
 
   @Output() change: EventEmitter<SelectedSponsors>
   @Output() cancel: EventEmitter<any>
   @Output() close: EventEmitter<any>
 
-  sponsors: DataSponsor[] = []
-  eventsBySponsor: {[sponsorName: string]: DataEvent[]} = {}
+  sponsors: HackSponsor[] = []
+  sponsorsWithEvents: HackSponsor[] = []
+  eventsBySponsor: {[sponsorId: string]: DataEvent[]} = {}
 
   private selectedSponsors: SelectedSponsors = {}
 
-  isSelected(sponsor: DataSponsor): boolean {
-    return this.selectedSponsors[sponsor.name] || false
+  constructor(private elt: ElementRef) {
+    this.change = new EventEmitter<SelectedSponsors>()
+    this.cancel = new EventEmitter<any>()
+    this.close = new EventEmitter<any>()
+  }
+
+  isSelected(sponsor: HackSponsor): boolean {
+    return this.selectedSponsors[sponsor.id] || false
   }
 
   selectAll() {
@@ -45,52 +55,77 @@ export class SponsorSearchComponent implements OnInit, OnChanges {
   }
 
 
-  select(sponsor: DataSponsor, select: boolean) {
-    (<any>sponsor).__selected = select
-    this.selectedSponsors[sponsor.name] = select
+  select(sponsor: HackSponsor, select: boolean) {
+    sponsor.__selected = select
+    this.selectedSponsors[sponsor.id] = select
   }
 
-  toggle(sponsor: DataSponsor) {
+  toggle(sponsor: HackSponsor) {
     // naughty for performance
-    this.select(sponsor, !(<any>sponsor).__selected)
+    this.select(sponsor, !sponsor.__selected)
     this.emitChange()
   }
 
-  getSponsorInclusionText(sponsor: DataSponsor): string {
-    let eventCount = this.eventsBySponsor[sponsor.name].length
+  getSponsorInclusionText(sponsor: HackSponsor): string {
+    const eventCount = sponsor.__events
     return '' + eventCount
-  }
-
-  constructor() {
-    this.change = new EventEmitter<SelectedSponsors>()
-    this.cancel = new EventEmitter<any>()
-    this.close = new EventEmitter<any>()
   }
 
   ngOnChanges () {
     if (this.selection) {
       this.selectedSponsors = this.selection
     }
-  }
 
-  ngOnInit () {
-    //
     this.sponsors = []
     let eventsBySponsor = this.eventsBySponsor
     eventsBySponsor = {}
-    for (let name in this.sponsorsByName) {
-      const sponsor = this.sponsorsByName[name]
-      eventsBySponsor[name] = []
+    eventsBySponsor[OtherID] = []
+    for (let id in this.sponsorsByID) {
+      const sponsor = this.sponsorsByID[id]
+      eventsBySponsor[id] = []
       this.sponsors.push(sponsor)
     }
 
     for (let eventDay of this.eventDays) {
-      eventDay.events.forEach((e) => eventsBySponsor[e.sponsorID].push(e))
+      eventDay.events.forEach((e) => {
+        eventsBySponsor[e.sponsorID].push(e)
+      })
     }
 
     this.eventsBySponsor = eventsBySponsor
 
+    this.updateMaxHeight()
+  }
+
+  // used in ngTrackBy
+  sponsorsTrackByFn (index: number, item: HackSponsor) {
+    return item.id
+  }
+
+  ngOnInit () {
+    // set event count
+    let eventTotals = {}
+    for (let event of this.allEvents) {
+      const prevCount = eventTotals[event.sponsorID] || 0
+      eventTotals[event.sponsorID] = prevCount + 1
+    }
+    for (let sponsor of this.sponsors) {
+      sponsor.__events = eventTotals[sponsor.id] || 0
+    }
+    this.sponsorsWithEvents = this.sponsors.filter((s) => s.__events > 0)
+
     this.selectAll()
+  }
+
+  updateMaxHeight () {
+    const selfElt = <HTMLElement> this.elt.nativeElement
+    // the container for all the sponsors
+    const sponCont = <HTMLDivElement> selfElt.querySelector('.sponsor-container')
+    if (!sponCont) return
+
+    const height = sponCont.offsetHeight
+
+    selfElt.style.maxHeight = `${height + 200}px`;
   }
 
   nToTime(n: number): string {

@@ -19,16 +19,16 @@
   </div>
 </div>
 <div class="sponsor-container">
-  <div *ngFor="let sponsor of sponsors"
+  <div *ngFor="let sponsor of sponsorsWithEvents; trackBy: sponsorsTrackByFn"
       class="sponsor-check"
       [class.sponsor-selected]="sponsor.__selected"
       (click)="toggle(sponsor)">
     <div class="btn">
       <img onerror="this.src='./thumbnails/alternative.jpg';"
-          [attr.src]="'./thumbnails/' + sponsor.name + '.jpg'"
+          [attr.src]="'./thumbnails/' + sponsor.image"
           [attr.alt]="">
-      {{ sponsor.letters ? sponsor.letters + ' - ' : '' }}
-      {{ sponsor.nickname || sponsor.name }}
+      {{ sponsor.name }}
+      {{ sponsor.nickname ? ' - ' + sponsor.nickname : '' }}
       <span class="sponsor-filter" [textContent]="getSponsorInclusionText(sponsor)"></span>
     </div>
   </div>

@@ -1,4 +1,5 @@
 import { DataSummary, DataEvent, DataSponsor } from '../../data/data-interfaces'
+
 const data = <DataSummary> require('../../data/dist/events.json')
 
 export type DisplayEvent = DataEvent & {
@@ -49,18 +50,10 @@ function replaceEventLocationLinks (a: DataEvent): DisplayEvent {
   return b
 }
 
-function replaceEventSemicolons (a: DataEvent): DataEvent {
-  const commas = a.description.replace(/;/g, ',')
-  let b = <DisplayEvent>
-    Object.assign({}, a, { description: commas })
-  return b
-}
-
 export function getData(): DataSummary {
   let events: DataEvent[] = data.events
     .sort(compareEvents)
     .map(replaceEventLocationLinks)
-    .map(replaceEventSemicolons)
     .map(addEventEmojis)
 
   return {

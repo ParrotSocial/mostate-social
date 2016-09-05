@@ -20,8 +20,9 @@
   </div>
   <vodka-sponsor-search class="search-options row"
       [class.search-open]="searchOpen"
-      [sponsorsByName]="sponsors"
+      [sponsorsByID]="sponsors"
       [eventDays]="eventDays"
+      [allEvents]="allEvents"
       (change)="changeSearch($event)"
       (close)="searchOpen = false"
       (cancel)="cancelSearch()">
@@ -36,7 +37,7 @@
       <div class="event-divider" *ngIf="!first"></div>
       <vodka-event-detail
           [event]="event"
-          [sponsor]="sponsors[event.sponsor]"
+          [sponsor]="sponsors[event.sponsorID]"
           [isOpen]="selectedEvent === event"
           (click)="selectedEvent = event">
       </vodka-event-detail>
@@ -54,15 +55,13 @@
 <!-- events
   "sponsors": {
     "Alpha Kappa Lambda": {
+      "id": "Alpha Kappa Lambda (AKL)",
       "name": "Alpha Kappa Lambda",
-      "letters": "ΑΚΛ",
-      "nickname": "AKL",
-      "twitter": "@AKLBetaPsiMSU",
-      "colors": null
+      "nickname": "AKL"
     },
  "events": [
     {
-      "sponsor": "Alpha Kappa Lambda",
+      "sponsor": "Alpha Kappa Lambda (AKL)",
       "description": "Meet and Greet",
       "startTime": 1472511600000,
       "endTime": 1472518800000,

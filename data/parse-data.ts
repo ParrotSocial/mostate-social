@@ -1,6 +1,7 @@
 /// <reference path="../typings/index.d.ts" />
 
-import { DataSponsor, DataEvent, DataSummary } from './data-interfaces'
+import { DataSponsor, DataEvent, DataSummary, OtherID } from './data-interfaces'
+export { OtherID }
 import fs = require('fs')
 const moment = require('moment')
 
@@ -64,6 +65,14 @@ function splitEventData (str): DataEvent {
   return evt;
 }
 
+function displaySponsor(evt: DataEvent, useOtherID: boolean): DataEvent {
+  evt.sponsorDisplay = evt.sponsorID
+  if (useOtherID) {
+    evt.sponsorID = OtherID
+  }
+  return evt
+}
+
 function extractEvents (fileContents: any, dataSummary: DataSummary)  {
   const [,...eventsData] = fileContents.split(/\s*\n\s*/g)
 
@@ -78,7 +87,9 @@ function extractEvents (fileContents: any, dataSummary: DataSummary)  {
 
   console.log(`# Events (${eventsDataSliced.length})`, eventsDataSliced)
 
-  let events: DataEvent[] = eventsDataSliced.map((evString: String) => splitEventData(evString))
+  let events: DataEvent[] = eventsDataSliced
+    .map(splitEventData)
+    .map((evt: DataEvent) => displaySponsor(evt, null == dataSummary.sponsors[evt.sponsorID])) // Assign sponsorDisplay, and sponsorID to OtherID if sponsor is not legit
 
   // modify dataSummary
   dataSummary.events.push(...events.slice(0, i))
@@ -105,16 +116,20 @@ export function create (readFromDirectory: string, done: (error: any, events: Da
     events: []
   }
 
-  fs.readdirSync(readFromDirectory)
-    .map((bn) => fs.readFileSync(`${readFromDirectory}/${bn}`, 'utf8'))    // get file contents
-    .forEach((evfile) => extractEvents(evfile, dataSummary)) // map to events
-
   const sponsorsContent = fs.readFileSync(__dirname + '/sponsors-info.json', 'utf8')
   const sponsors: [string, string][] = JSON.parse(sponsorsContent)
 
+  const OtherSponsor: [string, string] = [OtherID, null]
+
   sponsors
-    .map(createDataSponsor)    // create bare sponsor
+    .concat([OtherSponsor])  // Add Other to possible sponsors
+    .map(createDataSponsor)  // create bare sponsor
     .forEach((ds: DataSponsor) => dataSummary.sponsors[ds.id] = ds) // map to sponsor id
+
+  // extractEvents needs to read whether the dataSummary has a sponsor, so this is second
+  fs.readdirSync(readFromDirectory)
+    .map((bn) => fs.readFileSync(`${readFromDirectory}/${bn}`, 'utf8'))    // get file contents
+    .forEach((evfile) => extractEvents(evfile, dataSummary)) // map to events
 
 	done(null, dataSummary)
 }

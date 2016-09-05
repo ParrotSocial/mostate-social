@@ -75,10 +75,9 @@
 
 .search-options {
   transition: max-height .4s
-  max-height: 0;
   overflow: hidden
-  &.search-open {
-    max-height: (78px * 19);
+  &:not(.search-open) {
+    max-height: 0 !important;
   }
 }
 

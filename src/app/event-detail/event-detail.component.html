@@ -1,6 +1,7 @@
 <div class="info-sponsor-thumbnail">
   <img [attr.src]="'./thumbnails/' + sponsor.image"
       [attr.alt]="sponsor.id"
+      [attr.title]="sponsor.id + (sponsor.id === 'Other' ? ' (' + event.sponsorDisplay + ')' : '')"
       onerror="this.src='./thumbnails/alternative.jpg';">
   <!--<div class="nickname" [class.nickname-show]="isOpen">{{ sponsor.nickname || sponsor.name }}</div>-->
 </div>
@@ -17,7 +18,7 @@
   </div>
   <div class="details" [class.details-open]="isOpen">
     <div class="row">
-      <div class="hidden-sm-down col-md-4">{{ sponsor.letters }} - {{ sponsor.name }}</div>
+      <div class="hidden-sm-down col-md-4">{{ event.sponsorDisplay }}</div>
       <div class="col-sm-4 col-md-2 text-right-sm">Source:</div>
       <div class="col-sm-8 col-md-6" *ngIf="event.source">
         <vodka-source [source]="event.source"></vodka-source>

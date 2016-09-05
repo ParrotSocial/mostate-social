@@ -2327,6 +2327,12 @@
       "name": "Zeta Phi Beta Sorority, Incorporated",
       "nickname": null,
       "image": "16a60800-aa33-4f7e-96f3-bc51f410297ccc83de62-0959-44f7-b2eb-b9a5853db79a.jpg"
+    },
+    "Other": {
+      "id": "Other",
+      "name": "Other",
+      "nickname": null,
+      "image": null
     }
   },
   "events": [
@@ -2339,10 +2345,11 @@
       "location": "PSU 312",
       "meetTime": null,
       "meetLocation": "",
-      "source": "http://twitter.com"
+      "source": "http://twitter.com",
+      "sponsorDisplay": "Enactus Missouri State University (Enactus)"
     },
     {
-      "sponsorID": "Ozark's Celebration Festival",
+      "sponsorID": "Other",
       "submittedTimestamp": null,
       "title": "Ice Cream Social & Concert under the Stars",
       "startTime": 1475240400000,
@@ -2351,10 +2358,11 @@
       "locationAddress": "1147 E Grand St Springfield, MO 65897",
       "meetTime": null,
       "meetLocation": "",
-      "source": "http://ocf.missouristate.edu/concert.htm"
+      "source": "http://ocf.missouristate.edu/concert.htm",
+      "sponsorDisplay": "Ozark's Celebration Festival"
     },
     {
-      "sponsorID": "Ozark's Celebration Festival",
+      "sponsorID": "Other",
       "submittedTimestamp": 1462395600560,
       "title": "Weekend of Crafts, Exhibits and Music",
       "startTime": 1473519600000,
@@ -2362,10 +2370,11 @@
       "location": "",
       "meetTime": null,
       "meetLocation": "",
-      "source": "http://ocf.missouristate.edu/crafts.htm#byDateTime"
+      "source": "http://ocf.missouristate.edu/crafts.htm#byDateTime",
+      "sponsorDisplay": "Ozark's Celebration Festival"
     },
     {
-      "sponsorID": "Ozark's Celebration Festival",
+      "sponsorID": "Other",
       "submittedTimestamp": null,
       "title": "Ice Cream Social & Concert under the Stars",
       "startTime": 1475240400000,
@@ -2374,10 +2383,11 @@
       "locationAddress": "1147 E Grand St Springfield, MO 65897",
       "meetTime": null,
       "meetLocation": "",
-      "source": "http://ocf.missouristate.edu/concert.htm"
+      "source": "http://ocf.missouristate.edu/concert.htm",
+      "sponsorDisplay": "Ozark's Celebration Festival"
     },
     {
-      "sponsorID": "Ozark's Celebration Festival",
+      "sponsorID": "Other",
       "submittedTimestamp": null,
       "title": "Weekend of Crafts, Exhibits and Music",
       "startTime": 1473609600000,
@@ -2385,7 +2395,8 @@
       "location": "",
       "meetTime": null,
       "meetLocation": "",
-      "source": "http://ocf.missouristate.edu/crafts.htm"
+      "source": "http://ocf.missouristate.edu/crafts.htm",
+      "sponsorDisplay": "Ozark's Celebration Festival"
     },
     {
       "sponsorID": "Enactus Missouri State University (Enactus)",
@@ -2397,7 +2408,8 @@
       "locationAddress": "901 S National Ave, Springfield, MO",
       "meetTime": null,
       "meetLocation": "",
-      "source": "https://missouristate.collegiatelink.net/organization/SIFE/calendar/details/1012281"
+      "source": "https://missouristate.collegiatelink.net/organization/SIFE/calendar/details/1012281",
+      "sponsorDisplay": "Enactus Missouri State University (Enactus)"
     },
     {
       "sponsorID": "College Republicans (CRs)",
@@ -2411,7 +2423,8 @@
       "meetTime": null,
       "meetLocation": "",
       "meetLocationAddress": "",
-      "source": "https://missouristate.collegiatelink.net/organization/collegerepublicans/calendar/details/964331"
+      "source": "https://missouristate.collegiatelink.net/organization/collegerepublicans/calendar/details/964331",
+      "sponsorDisplay": "College Republicans (CRs)"
     },
     {
       "sponsorID": "College Republicans (CRs)",
@@ -2425,7 +2438,8 @@
       "meetTime": null,
       "meetLocation": "",
       "meetLocationAddress": "",
-      "source": "https://missouristate.collegiatelink.net/organization/collegerepublicans/calendar/details/979816"
+      "source": "https://missouristate.collegiatelink.net/organization/collegerepublicans/calendar/details/979816",
+      "sponsorDisplay": "College Republicans (CRs)"
     },
     {
       "sponsorID": "College Republicans (CRs)",
@@ -2439,7 +2453,8 @@
       "meetTime": null,
       "meetLocation": "",
       "meetLocationAddress": "",
-      "source": "https://missouristate.collegiatelink.net/organization/collegerepublicans/calendar/details/979815"
+      "source": "https://missouristate.collegiatelink.net/organization/collegerepublicans/calendar/details/979815",
+      "sponsorDisplay": "College Republicans (CRs)"
     },
     {
       "sponsorID": "College Republicans (CRs)",
@@ -2453,7 +2468,8 @@
       "meetTime": null,
       "meetLocation": "",
       "meetLocationAddress": "",
-      "source": "https://missouristate.collegiatelink.net/organization/collegerepublicans/calendar/details/979814"
+      "source": "https://missouristate.collegiatelink.net/organization/collegerepublicans/calendar/details/979814",
+      "sponsorDisplay": "College Republicans (CRs)"
     }
   ]
 }

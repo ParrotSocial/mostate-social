@@ -1,6 +1,11 @@
 
 type ID = string
 
+/**
+ * Other Id is assigned to any event that does not have an indexed Sponsor
+ */
+export const OtherID = "Other"
+
 export interface DataSponsor {
   id: ID,
   name: string,
@@ -9,8 +14,9 @@ export interface DataSponsor {
 }
 
 export interface DataEvent {
-  sponsorID: ID
-  submittedTimestamp: number
+  sponsorID: ID,
+  sponsorDisplay?: string,
+  submittedTimestamp: number,
   title: string,
   description?: string
   startTime: number

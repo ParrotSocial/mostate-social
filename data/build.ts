@@ -1,4 +1,4 @@
-import * as GetData from './get-data'
+import * as GetData from './parse-data'
 import fs = require('fs')
 
 var distDir = __dirname + '/dist'
