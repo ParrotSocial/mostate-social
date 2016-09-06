@@ -2,6 +2,12 @@
 
 This is a project by Parrot Social.
 
+
+![iPad](./github/screenshots/2016-09-05/events.mostate.social-iPad.png)
+![iPhone 6 Plus](./github/screenshots/2016-09-05/events.mostate.social-iPhone-6-Plus.png)
+![iPhone 6 Plus Searching](./github/screenshots/2016-09-05/events.mostate.social-iPhone-6-Plus-Searching.png)
+![Desktop](./github/screenshots/2016-09-05/events.mostate.social-desktop.png)
+
 ## Set up
 
 Have NodeJS installed, we have different versions from 5.9 and up, it should n't be too important which version you use, but at the time of writing this, we are compiling everything on Node v5.9.1 and installing npm with NPM v3.7.3
