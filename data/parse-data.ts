@@ -5,14 +5,23 @@ export { OtherID }
 import fs = require('fs')
 const moment = require('moment')
 
+const OneDay =
+  1000  /* ms/s */ *
+  60    /* s/m */ *
+  60    /* m/h */ *
+  24    /* h/d */
+
 // returns null if the time is invalid
 // takes moment object and time string ('16:00:00 PM')
 function setTime(mom, time: string): number {
   let [hour, minute, second, ap] = time.split(/[:\s]/g)
 
-  if (/PM/.test(ap)) hour += 12
-
-  if (isInt(hour) && isInt(minute)) return mom.set('hour', hour).set('minute', minute).valueOf()
+  if (isInt(hour) && isInt(minute)) {
+    let hourNumber = parseInt(hour)
+    let minuteNumber = parseInt(minute)
+    if (/PM/.test(ap)) hourNumber += 12
+    return mom.set('hour', hourNumber).set('minute', minuteNumber).valueOf()
+  }
 
   if (time.length)
     console.warn(`Unable to parse time: ${time}`)
@@ -43,9 +52,12 @@ function splitEventData (str): DataEvent {
     description ] = str.split(/\t/g)
 
   const momentDate = moment(date, 'MM/DD/YYYY')
-  const startTime = isInt(timeStart) ? setTime(momentDate, timeStart) : null
-  const endTime = isInt(timeEnd) ? setTime(momentDate, timeEnd) : null
-  const meetTime = isInt(timeMeet) ? setTime(momentDate, timeMeet) : null
+  const startTime = setTime(momentDate, timeStart)
+  let endTime = setTime(momentDate, timeEnd)
+  // In the case that something ends at midnight, this value needs to be on the next day
+  if (endTime < startTime) endTime += OneDay
+
+  const meetTime = setTime(momentDate, timeMeet)
   const submittedTimestamp = moment(timeSubmitted, 'M/D/YYYY H:MM:SS').valueOf()
 
   let evt: DataEvent = {
