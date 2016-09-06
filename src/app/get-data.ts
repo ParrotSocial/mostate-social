@@ -34,8 +34,17 @@ function addEventEmojis (a: DataEvent): DisplayEvent {
   return b
 }
 
+const latLongRegex = /(\-?\d+.\d+)\W+(\-?\d+.\d+)/
+const legitLatLongRegex = /(\d+°\d+'\d+(?:.\d*)?"\W*[NS])\W*(\d+°\d+'\d+(?:.\d*)?"\W*[WE])/
 function addressToHref(address: string): string {
   if (typeof address !== 'string' || address.length === 0) return null
+
+  const legitLatLongMatch = legitLatLongRegex.exec(address)
+  if (legitLatLongMatch) return `https://www.google.com/maps/place/${legitLatLongMatch[1]}+${legitLatLongMatch[2]}`
+
+
+  const latLongMatch = latLongRegex.exec(address)
+  if (latLongMatch) return `https://www.google.com/maps/place/${latLongMatch[1]},${latLongMatch[2]}`
   // test if there are any breaks in the address, indicating that it may be outside Springfield
   // add Springfield, MO otherwise
   if (!/[;,]/.test(address)) address += ', Springfield, MO'
