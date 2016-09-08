@@ -1,5 +1,5 @@
 import { DataSummary, DataEvent, DataSponsor } from '../../../data/data-interfaces'
-import { EventDay, EventFilter, EventSorter } from './event-interfaces'
+import { EventDay, EventFilter, EventSorter, EventsByTime } from './event-interfaces'
 
 const Moment = require('moment')
 
