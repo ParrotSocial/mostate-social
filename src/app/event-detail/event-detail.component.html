@@ -1,4 +1,4 @@
-<div class="info-sponsor-thumbnail">
+<div class="info-sponsor-thumbnail" (click)="onClickHeading()">
   <img [attr.src]="'./thumbnails/' + sponsor.image"
       [attr.alt]="sponsor.id"
       [attr.title]="sponsor.id + (sponsor.id === 'Other' ? ' (' + event.sponsorDisplay + ')' : '')"
@@ -6,9 +6,9 @@
   <!--<div class="nickname" [class.nickname-show]="isOpen">{{ sponsor.nickname || sponsor.name }}</div>-->
 </div>
 <div class="event-body">
-  <div class="row event-header">
+  <div class="row event-header" (click)="onClickHeading()">
     <!--<div class="col-xs-2 col-md-2 info-sponsor">{{ sponsor.nickname || event.sponsor }}</div>-->
-    <h3 class="">
+    <h3>
       <span class="info-desc col-xs-8"
           [innerHTML]="security.bypassSecurityTrustHtml(event.displayTitle || event.title)"></span>
       <span class="info-time col-xs-4 text-right-xs">

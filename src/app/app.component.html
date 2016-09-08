@@ -53,7 +53,7 @@
           [event]="event"
           [sponsor]="sponsors[event.sponsorID]"
           [isOpen]="event.__detailOpen"
-          (click)="event.__detailOpen = !event.__detailOpen">
+          (toggleOpen)="event.__detailOpen = $event">
       </vodka-event-detail>
     </div>
   </div>
