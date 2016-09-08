@@ -1,12 +1,16 @@
 import { Component, OnInit, Input, Output, EventEmitter, OnChanges, ElementRef } from '@angular/core';
 const moment = require('moment')
 
+import { isEventHappening } from '../shared/event-helpers'
+
 import { EventDay, EventFilter, EventSorter } from '../shared/event-interfaces'
 import { DataSummary, DataEvent, DataSponsor, OtherID } from '../../../data/data-interfaces'
 
 export type SelectedSponsors = {[sponsor: string]: boolean}
 
 export type HackSponsor = DataSponsor & { __selected?: boolean, __events?: number }
+
+type EventBySponsor = {[sponsorId: string]: DataEvent[]}
 
 @Component({
   selector: 'ps-sponsor-search',
@@ -30,7 +34,7 @@ export class SponsorSearchComponent implements OnInit, OnChanges {
 
   sponsors: HackSponsor[] = []
   sponsorsWithEvents: HackSponsor[] = []
-  eventsBySponsor: {[sponsorId: string]: DataEvent[]} = {}
+  eventsBySponsor: EventBySponsor = {}
 
   private selectedSponsors: SelectedSponsors = {}
 
@@ -77,8 +81,7 @@ export class SponsorSearchComponent implements OnInit, OnChanges {
     }
 
     this.sponsors = []
-    let eventsBySponsor = this.eventsBySponsor
-    eventsBySponsor = {}
+    let eventsBySponsor: EventBySponsor = {}
     eventsBySponsor[OtherID] = []
     for (let id in this.sponsorsByID) {
       const sponsor = this.sponsorsByID[id]
@@ -105,7 +108,10 @@ export class SponsorSearchComponent implements OnInit, OnChanges {
   ngOnInit () {
     // set event count
     let eventTotals = {}
-    for (let event of this.allEvents) {
+    const now = Date.now()
+    const upcomingEvents = this.allEvents.filter((event) => isEventHappening(event, now))
+    for (let event of upcomingEvents) {
+
       const prevCount = eventTotals[event.sponsorID] || 0
       eventTotals[event.sponsorID] = prevCount + 1
     }
