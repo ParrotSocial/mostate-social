@@ -20,7 +20,7 @@ interface EventsByTime {
 }
 
 @Component({
-  selector: 'vodka',
+  selector: 'ps-app',
   template: require('./app.component.html'),
   styles: [
 `:host {

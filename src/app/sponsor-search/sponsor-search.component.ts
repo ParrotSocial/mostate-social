@@ -9,7 +9,7 @@ export type SelectedSponsors = {[sponsor: string]: boolean}
 export type HackSponsor = DataSponsor & { __selected?: boolean, __events?: number }
 
 @Component({
-  selector: 'vodka-sponsor-search',
+  selector: 'ps-sponsor-search',
   template: require('./sponsor-search.component.html'),
   styles: [
 `:host {

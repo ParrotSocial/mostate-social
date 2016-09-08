@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 const moment = require('moment')
 
 @Component({
-  selector: 'vodka-location-time',
+  selector: 'ps-location-time',
   template: require('./location-time.component.html'),
   styles: [
 `:host {

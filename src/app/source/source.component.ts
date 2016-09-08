@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-  selector: 'vodka-source',
+  selector: 'ps-source',
   template: require('./source.component.html'),
 })
 export class SourceComponent implements OnInit {

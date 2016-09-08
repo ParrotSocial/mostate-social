@@ -1,5 +1,5 @@
 <!--<nav class="navbar navbar-dark bg-inverse">
-  <a class="navbar-brand" href="#" style="text-transform:uppercase;">mostate vodka</a>
+  <a class="navbar-brand" href="#" style="text-transform:uppercase;">mostate ps</a>
   <!--<div id="navbar">
     <div class="pull-xs-right">
       <input type="text" [(ngModel)]="search" class="form-control" placeholder="Search...">
@@ -28,7 +28,7 @@
       <span (click)="openSearch()" class="search-btn">🔎 <span class="chevron"></span></span>
     </div>
   </div>
-  <vodka-sponsor-search class="search-options row"
+  <ps-sponsor-search class="search-options row"
       [class.search-open]="searchOpen"
       [sponsorsByID]="sponsors"
       [eventDays]="eventDays"
@@ -36,7 +36,7 @@
       (change)="changeSearch($event)"
       (close)="searchOpen = false"
       (cancel)="cancelSearch()">
-  </vodka-sponsor-search>
+  </ps-sponsor-search>
   <div *ngFor="let eventDay of eventDays"
       class="event-day"
       [class.is-today]="eventDay.isToday">
@@ -49,12 +49,12 @@
     </div>
     <div *ngFor="let event of eventDay.events; let first = first">
       <div class="event-divider" *ngIf="!first"></div>
-      <vodka-event-detail
+      <ps-event-detail
           [event]="event"
           [sponsor]="sponsors[event.sponsorID]"
           [isOpen]="event.__detailOpen"
           (toggleOpen)="event.__detailOpen = $event">
-      </vodka-event-detail>
+      </ps-event-detail>
     </div>
   </div>
   <div class="footer row">

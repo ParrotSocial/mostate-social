@@ -4,7 +4,7 @@ import { DomSanitizer } from '@angular/platform-browser'
 import { DataEvent, DataSponsor } from '../../../data/data-interfaces'
 
 @Component({
-  selector: 'vodka-event-detail',
+  selector: 'ps-event-detail',
   template: require('./event-detail.component.html'),
   styles: [
     require('./event-detail.component.styl')
