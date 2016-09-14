@@ -99,12 +99,16 @@ function extractEvents (fileContents: any, dataSummary: DataSummary)  {
 
   console.log(`# Events (${eventsDataSliced.length})`, eventsDataSliced)
 
+  // Filter everything one week old or older
+  const timeWeekAgo = moment().subtract(1, 'weeks').valueOf()
+
   let events: DataEvent[] = eventsDataSliced
     .map(splitEventData)
     .map((evt: DataEvent) => displaySponsor(evt, null == dataSummary.sponsors[evt.sponsorID])) // Assign sponsorDisplay, and sponsorID to OtherID if sponsor is not legit
+    .filter((evt: DataEvent) => (evt.meetTime || evt.startTime || 0) > timeWeekAgo)
 
   // modify dataSummary
-  dataSummary.events.push(...events.slice(0, i))
+  dataSummary.events.push(...events)
 }
 
 function createDataSponsor(bn: [string, string]): DataSponsor {
