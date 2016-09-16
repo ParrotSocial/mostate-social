@@ -2338,19 +2338,6 @@
   "events": [
     {
       "sponsorID": "Other",
-      "submittedTimestamp": null,
-      "title": "Ice Cream Social & Concert under the Stars",
-      "startTime": 1473458400000,
-      "endTime": 1473474600000,
-      "location": "Craig Hall Tent Pad",
-      "locationAddress": "1147 E Grand St Springfield, MO 65897",
-      "meetTime": null,
-      "meetLocation": "",
-      "source": "http://ocf.missouristate.edu/concert.htm",
-      "sponsorDisplay": "Ozark's Celebration Festival"
-    },
-    {
-      "sponsorID": "Other",
       "submittedTimestamp": 1462395600560,
       "title": "Weekend of Crafts, Exhibits and Music",
       "startTime": 1473519600000,
@@ -2364,19 +2351,6 @@
     {
       "sponsorID": "Other",
       "submittedTimestamp": null,
-      "title": "Ice Cream Social & Concert under the Stars",
-      "startTime": 1473458400000,
-      "endTime": 1473476400000,
-      "location": "Craig Hall Tent Pad",
-      "locationAddress": "1147 E Grand St Springfield, MO 65897",
-      "meetTime": null,
-      "meetLocation": "",
-      "source": "http://ocf.missouristate.edu/concert.htm",
-      "sponsorDisplay": "Ozark's Celebration Festival"
-    },
-    {
-      "sponsorID": "Other",
-      "submittedTimestamp": null,
       "title": "Weekend of Crafts, Exhibits and Music",
       "startTime": 1473609600000,
       "endTime": 1473633000000,
@@ -2385,21 +2359,6 @@
       "meetLocation": "",
       "source": "http://ocf.missouristate.edu/crafts.htm",
       "sponsorDisplay": "Ozark's Celebration Festival"
-    },
-    {
-      "sponsorID": "College Republicans (CRs)",
-      "submittedTimestamp": null,
-      "title": "College Republicans Meeting",
-      "description": "Join us for our first meeting of the semester!",
-      "startTime": 1473210000000,
-      "endTime": 1473213600000,
-      "location": "PSU Room 314 ( 3rd Floor )",
-      "locationAddress": "1110 E Madison St, Springfield, MO",
-      "meetTime": null,
-      "meetLocation": "",
-      "meetLocationAddress": "",
-      "source": "https://missouristate.collegiatelink.net/organization/collegerepublicans/calendar/details/964331",
-      "sponsorDisplay": "College Republicans (CRs)"
     },
     {
       "sponsorID": "College Republicans (CRs)",
@@ -2445,51 +2404,6 @@
       "meetLocationAddress": "",
       "source": "https://missouristate.collegiatelink.net/organization/collegerepublicans/calendar/details/979814",
       "sponsorDisplay": "College Republicans (CRs)"
-    },
-    {
-      "sponsorID": "Student Activities Council (SAC)",
-      "submittedTimestamp": null,
-      "title": "Rajiv Surrendra",
-      "description": "See this Mean Girls actor as he describes his life's journey.",
-      "startTime": 1473292800000,
-      "endTime": 1473300000000,
-      "location": "PSU",
-      "locationAddress": "1110 E Madison St, Springfield, MO",
-      "meetTime": null,
-      "meetLocation": "",
-      "meetLocationAddress": "",
-      "source": "http://calendar.missouristate.edu/home/agenda?admittance=either&sponsors=St72&campus=s&timespan=future",
-      "sponsorDisplay": "Student Activities Council (SAC)"
-    },
-    {
-      "sponsorID": "Student Activities Council (SAC)",
-      "submittedTimestamp": 1454706000520,
-      "title": "Capture the Flag",
-      "description": "Come play a sprawling game of capture the flag.",
-      "startTime": 1473386400000,
-      "endTime": 1473440400000,
-      "location": "South Mall",
-      "locationAddress": "South Mall (Between McDonald Arena and Plaster Field); 37°11'55.1\"N 93°16'48.6\"W",
-      "meetTime": null,
-      "meetLocation": "",
-      "meetLocationAddress": "",
-      "source": "http://calendar.missouristate.edu/home/agenda?admittance=either&sponsors=St72&campus=s&timespan=future",
-      "sponsorDisplay": "Student Activities Council (SAC)"
-    },
-    {
-      "sponsorID": "Student Activities Council (SAC)",
-      "submittedTimestamp": 1462478400400,
-      "title": "Fruit Fest!",
-      "description": "Enjoy the nice weather with a giant fruit giveaway!",
-      "startTime": 1473436800000,
-      "endTime": 1473447600000,
-      "location": "Strong Hall Front Stage",
-      "locationAddress": "Strong Hall Outdoor Stage; 37°11'55.1\"N 93°17'02.5\"W",
-      "meetTime": null,
-      "meetLocation": "",
-      "meetLocationAddress": "",
-      "source": "http://calendar.missouristate.edu/home/agenda?admittance=either&sponsors=St72&campus=s&timespan=future",
-      "sponsorDisplay": "Student Activities Council (SAC)"
     },
     {
       "sponsorID": "Student Activities Council (SAC)",
@@ -3075,6 +2989,36 @@
       "meetLocationAddress": "",
       "source": "http://sga.missouristate.edu/192486.htm",
       "sponsorDisplay": "Student Government Association (SGA)"
+    },
+    {
+      "sponsorID": "Other",
+      "submittedTimestamp": null,
+      "title": "See You At The Pole 2016",
+      "description": "Join in prayer with other campus believers and celebrate a global day of student prayer specifically praying over MO State. Everyone welcome.",
+      "startTime": 1475064000000,
+      "endTime": 1475065800000,
+      "location": "In front of Carrington Hall",
+      "locationAddress": "37°11'54.9\"N 93°16'41.2\"W",
+      "meetTime": null,
+      "meetLocation": "",
+      "meetLocationAddress": "",
+      "source": "https://www.facebook.com/events/110816819373424/",
+      "sponsorDisplay": "Christian Campus Ministries"
+    },
+    {
+      "sponsorID": "Christian Campus House (CCH)",
+      "submittedTimestamp": null,
+      "title": "Nations At The Park",
+      "description": "A Craft and field-game night at Phelps Grove Park for students from all over the world (American and Non-American). This is an opportunity to meet new people and have fun.  *Rides will be provided. ",
+      "startTime": 1474630200000,
+      "endTime": 1474639200000,
+      "location": "Phelps Grove Park",
+      "locationAddress": "",
+      "meetTime": 1474629300000,
+      "meetLocation": "Christian Campus House (just past the Qube apartments)",
+      "meetLocationAddress": "616 Bear Blvd. ",
+      "source": "https://www.facebook.com/events/1776602709246281/",
+      "sponsorDisplay": "Christian Campus House (CCH)"
     }
   ]
 }
