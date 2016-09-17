@@ -48,6 +48,14 @@ export class SponsorSearchComponent implements OnInit, OnChanges {
     return this.selectedSponsors[sponsor.id] || false
   }
 
+  isNoneSelected(): boolean {
+    for (let sponsorId in this.selectedSponsors) {
+      if (this.selectedSponsors[sponsorId]) return false
+    }
+
+    return true
+  }
+
   selectAll() {
     this.sponsors.forEach((s) => this.select(s, true))
     this.emitChange()

@@ -95,6 +95,11 @@ export class AppComponent implements OnInit {
   }
 
   toggleSearch() {
+    // If none are selected and closing the search, then select all
+    if (this.searchOpen && this.sponsorSearch.isNoneSelected()) {
+      this.sponsorSearch.selectAll()
+    }
+
     if (!this.isSearchApplied) this.sponsorSearch.selectNone()
     this.searchOpen = !this.searchOpen
   }
