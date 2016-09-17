@@ -94,7 +94,7 @@ export class AppComponent implements OnInit {
     }, 500)
   }
 
-  openSearch() {
+  toggleSearch() {
     if (!this.isSearchApplied) this.sponsorSearch.selectNone()
     this.searchOpen = !this.searchOpen
   }
